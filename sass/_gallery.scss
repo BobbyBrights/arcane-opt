@@ -1,0 +1,76 @@
+
+
+/* Gallery styles */
+
+#gallery{
+
+
+
+    width:445px; margin-left:16px;
+    overflow:hidden;
+}
+
+#slides{
+    /* This is the slide area */
+    height:325px;  margin-top:3px !important;
+
+    /* jQuery changes the width later on to the sum of the widths of all the slides. */
+    width:420px;
+    overflow:hidden;
+}
+
+.slide{
+    float:left; margin:10px 0px 0px 0px;
+}
+
+#menu{
+    /* This is the container for the thumbnails */
+    height:55px; width:auto; margin:auto;
+}
+
+#menu ul{
+    margin:0px;
+    padding:0px;
+}
+
+#menu li{
+    /* Every thumbnail is a li element */
+    width:auto;
+    display:inline-block;
+    list-style:none;
+    height:55px;
+    overflow:hidden;
+}
+
+
+
+#menu li.act a{
+    cursor:default; opacity:1;
+}
+
+
+
+#menu li a{
+    background:url(img/gal-thumb-frame.png) no-repeat scroll 0 0 transparent;
+    display: block;
+    float: left;
+    height: 48px;
+    padding-left: 5px;
+    padding-top: 5px;
+    width: 70px;
+    opacity:0.3;
+}
+
+li.inact:hover{
+    /* The inactive state, highlighted on mouse over */
+    opacity:1;
+}
+
+li.act,li.act:hover{
+    /* The active state of the thumb */
+    opacity:1;
+}
+
+li.act a{
+    opacity:1;
+}
