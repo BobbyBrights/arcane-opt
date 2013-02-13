@@ -6,31 +6,30 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
+        <title>Arcane Legends</title>
         <meta name="description" content="">
 		<meta name="viewport" id="viewport" content="width=480" />
 		<link rel="stylesheet" href="css/arcane.css">
 		<link href='http://fonts.googleapis.com/css?family=Carme' rel='stylesheet' type='text/css'>
 		<link rel="shortcut icon" href="img/favicon.ico">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+	    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
+	    <script src="js/plugins-ck.js"></script>
+		<script>
+				//configure options here:
+				var rwd_images = {
 
-<script>
-		//configure options here:
-		var rwd_images = {
-			widthBreakPoint: 768
-		};
-</script>
+					widthBreakPoint: 768
+				};
+			</script>
+		<script src="js/responsiveimgs.js"></script>
+		<script type="text/javascript" src="js/cufon-yui.js"></script>
+		<script type="text/javascript" src="js/myth.js"></script>
+		<script type="text/javascript">
+			Cufon.replace('.myth');
+		</script>
 
-<!--<script type="text/javascript" src="js/adapt.min.js"></script>-->
-
-<script type="text/javascript" src="js/cufon-yui.js"></script>
-<script type="text/javascript" src="js/myth.js"></script>
-<script type="text/javascript">
-
-	Cufon.replace('.myth');
-
-
-</script>
-	<script src="js/vendor/modernizr-2.6.2.min.js"></script>
+		<script src="js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 
 <body>
@@ -134,66 +133,6 @@
 
 
 			</div>
-<script type="text/javascript" charset="utf-8">
-
-function slide_left2(){
- var auto = 0;
- if(arguments.length > 0)
- {
-  auto = arguments[0];
- }
-
- $('#pets123').animate({ 'margin-left': '-=264'}, function () {
-
-  f_li = $('<div />').append($('#pets123').children('li:first-child').clone()).html();
-  $('#pets123').children('li:first-child').remove();
-  $('#pets123').append(f_li);
-
-  $('#pets123').css({'margin-left':(parseInt($('#pets123').css('margin-left'))+264)+'px'});
- });
-
- if(auto)
- {
-  setTimeout('slide_left2('+auto+');', 4000);
- }
-}
-function slide_right2(){
- var auto = 0;
- if(arguments.length > 0)
- {
-  auto = arguments[0];
- }
-
- $('#pets123').animate({ 'margin-left': '+=264'}, function () {
-
-  l_li = $('<div />').append($('#pets123').children('li:last-child').clone()).html();
-  $('#pets123').children('li:last-child').remove();
-  $('#pets123').prepend(l_li);
-  $('#pets123').css({'margin-left':(parseInt($('#pets123').css('margin-left'))-264)+'px'});
- });
-
- if(auto)
- {
-  setTimeout('slide_right2('+auto+');', 4000);
- }
-}
-$(document).ready(function(){
-	slide_left2(1);
-
-	$("#pets123").swipe({
-				swipeLeft:function(){
-					slide_left2();
-				},
-				swipeRight:function(){
-
-
-					slide_right2();
-				}
-
-			});
-
-	});
-</script>
 
 			<div class="cont" id="pet">
 				<h2 class="title myth"><img src="img/a.png" />CHOOSE YOUR PET!</h2>
@@ -285,76 +224,6 @@ $(document).ready(function(){
 
 					</div>
 
-
-
-
-
-
-<script>
-function slide_left(){
- var auto = 0;
- if(arguments.length > 0)
- {
-  auto = arguments[0];
- }
-
- $('#slider22').animate({ 'margin-left': '-=382'}, function () {
-
-  f_li = $('<div />').append($('#slider22').children('li:first-child').clone()).html();
-  $('#slider22').children('li:first-child').remove();
-  $('#slider22').append(f_li);
-
-  $('#slider22').css({'margin-left':(parseInt($('#slider22').css('margin-left'))+382)+'px'});
- });
-
- if(auto)
- {
-  setTimeout('slide_left('+auto+');', 4000);
- }
-}
-function slide_right(){
- var auto = 0;
- if(arguments.length > 0)
- {
-  auto = arguments[0];
- }
-
- $('#slider22').animate({ 'margin-left': '+=382'}, function () {
-
-  l_li = $('<div />').append($('#slider22').children('li:last-child').clone()).html();
-  $('#slider22').children('li:last-child').remove();
-  $('#slider22').prepend(l_li);
-  $('#slider22').css({'margin-left':(parseInt($('#slider22').css('margin-left'))-382)+'px'});
- });
-
- if(auto)
- {
-  setTimeout('slide_right('+auto+');', 4000);
- }
-}
-
-
-$(document).ready(function(){
-	slide_left(1);
-
-	$("#slider22").swipe({
-				swipeLeft:function(){
-					slide_left();
-				},
-				swipeRight:function(){
-
-
-					slide_right();
-				}
-
-			});
-
-	});
-
-
-
-</script>
-
 	<div class="slider31" style="overflow: hidden; width: 480px; margin-left: -20px; margin-top: 20px;">
 		<ul id="slider22" style="width: 2674px;margin-left:-334px">
 						<li style="float: left; list-style: none outside none;" class="bx-clone">
@@ -398,56 +267,7 @@ $(document).ready(function(){
 
 		<div id="footer">
 			<p><a id="poweredby" href="http://www.spacetimestudios.com" target="_blank"><img src="img/powered-by.jpg" /></a></p>
-			<script>
-				function initFooter()
-{
-	quickHide($("#footer .othergames a img.txt"));
 
-	$("#footer .othergames a").hover(
-		function(){
-			$(this).find('img.icon').tween({
-				opacity:{
-					start:100,
-					stop:25,
-					duration:0.5,
-					effect:'easeInOut'
-				}
-			});
-			$(this).find('img.txt').tween({
-				opacity:{
-					start:0,
-					stop:100,
-					duration:0.8,
-					effect:'easeIn'
-				}
-			});
-			$.play();
-		},
-
-		function(){
-			$(this).find('img.icon').tween({
-				opacity:{
-					start:25,
-					stop:100,
-					duration:0.5,
-					effect:'easeInOut'
-				}
-			});
-			$(this).find('img.txt').tween({
-				opacity:{
-					start:100,
-					stop:0,
-					duration:0.8,
-					effect:'easeOut'
-				}
-			});
-			$.play();
-
-		}
-		);
-}
-
-</script>
 			<p class="othergames">
 
 				<a href="http://www.starlegends.com/" target="_blank"><img class="icon" src="img/star-legends.png"/><img class="txt" src="img/star-legends-txt.png"/></a>
@@ -466,80 +286,9 @@ $(document).ready(function(){
 
 
 	</div><!--end wrapper-->
-
-<script type="text/javascript" src="js/jquery.client.js"></script>
-<script type="text/javascript" src="js/mdetect.js"></script>
+<script src="js/main-ck.js"></script>
 <script type="text/javascript">
-
-
-/*Links*/
-var googleplay_link = 'https://play.google.com/store/apps/details?id=sts.al&hl=en';
-var chrome_link ='https://chrome.google.com/webstore/detail/arcane-legends/ibmlkgieigeddcedpbijnpojheoddido';
-var appstore_link ='http://itunes.apple.com/us/app/arcane-legends/id543335870';
-var kindle_link ='http://support.spacetimestudios.com/entries/20789066-can-i-play-on-a-kindle-fire';
-
-
-/*prebuilt tweens*/
-function fadeToHalf(){
-	$(this).find('img').tween({opacity:{
-												start:100,
-												stop:50,
-												duration:0.5,
-												effect:'easeOut'
-											}
-										});
-						$.play();
-}
-
-function fadeToFull(){
-	$(this).find('img').tween({opacity:{
-												stop:100,
-												duration:0.5,
-												effect:'easeOut'
-											}
-										});
-						$.play();
-}
-function fadeTo90(){
-	$(this).find('img').tween({opacity:{
-												start:100,
-												stop:90,
-												duration:0.5,
-												effect:'easeOut'
-											}
-										});
-						$.play();
-}
-
-function quickHide(jo){
-	jo.tween({opacity:{
-												stop:0,
-												duration:0.1
-											}
-										});
-						$.play();
-}
-function normalShow(jo){
-	jo.tween({opacity:{
-												stop:100,
-												duration:3,
-												effect:'easeOut'
-											}
-										});
-						$.play();
-}
-function fastShow(jo){
-	jo.tween({opacity:{
-												stop:100,
-												duration:1,
-												effect:'easeOut'
-											}
-										});
-						$.play();
-}
-
-
-	$(document).ready(function(){
+$(document).ready(function(){
 		quickHide($('#header'));
 		quickHide($('#pets'));
 		//quickHide($('#slider22'));
@@ -548,98 +297,6 @@ function fastShow(jo){
 		quickHide($('#branch-right'));
 		preloadHeader();
 		initFooter();
-
-
-
-
-	/*	$("#pets").swipe({
-			swipeLeft:function(){
-				$('.bx-next').click();
-			},
-			swipeRight:function(){
-				$('.bx-prev').click();
-			}
-
-		});
-*/
-
-
-
-
-		/*$("#slider").swipe({
-			swipeStatus:function(event, phase, direction, distance)
-			{
-				//If we are moving before swipe, and we are going Lor R in X mode, or U or D in Y mode then drag.
-				if( phase=="move" && (direction=="left" || direction=="right") )
-				{
-					var duration=0;
-
-					if (direction == "left")
-						scrollImages((IMG_WIDTH * currentImg) + distance, duration);
-
-					else if (direction == "right")
-						scrollImages((IMG_WIDTH * currentImg) - distance, duration);
-
-				}
-
-				else if ( phase == "cancel")
-				{
-					scrollImages(IMG_WIDTH * currentImg, speed);
-				}
-
-				else if ( phase =="end" )
-				{
-					if (direction == "right")
-						previousImage()
-					else if (direction == "left")
-						nextImage()
-				}
-
-
-			}
-
-		});*/
-
-
-
-
-
-
-
-
-		/*$("#pets").touchwipe({
-		     wipeLeft: function() { $('.bx-next').click();},
-		     wipeRight: function() { $('.bx-prev').click(); },
-		     min_move_x: 20,
-		     min_move_y: 20,
-		     preventDefaultEvents: true
-		});
-
-		function scrollImages(distance, duration)
-			{
-				imgs.css("-webkit-transition-duration", (duration/1000).toFixed(1) + "s");
-
-				//inverse the number we set in the css
-				var value = (distance<0 ? "" : "-") + Math.abs(distance).toString();
-
-				imgs.css("-webkit-transform", "translate3d("+value +"px,0px,0px)");
-			}
-
-		$("#slider").touchwipe({
-		     wipeLeft: function() {
-		     	console.log('slider left : '+$('#slider').position().left);
-		     	if($('#slider').position().left> -1460)
-		     		$('#slider').animate({left:'-=365px'});
-		 	},
-		     wipeRight: function() {
-
-		     	if($('#slider').position().left< -360)
-		     		$('#slider').animate({left:'+=365px'});
-		     },
-		     min_move_x: 20,
-		     min_move_y: 20,
-		     preventDefaultEvents: true
-		});*/
 
 
 		$('.popuplink').click(function(e){
@@ -662,13 +319,6 @@ function fastShow(jo){
 
 
 	});
-
-
-
-	</script>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
-    <script src="js/plugins-ck.js"></script>
-    <script src="js/main-ck.js"></script>
+</script>
 </body>
 </html>

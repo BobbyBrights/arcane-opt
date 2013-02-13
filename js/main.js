@@ -1,5 +1,274 @@
+/*Links*/
+var googleplay_link = 'https://play.google.com/store/apps/details?id=sts.al&hl=en';
+var chrome_link ='https://chrome.google.com/webstore/detail/arcane-legends/ibmlkgieigeddcedpbijnpojheoddido';
+var appstore_link ='http://itunes.apple.com/us/app/arcane-legends/id543335870';
+var kindle_link ='http://support.spacetimestudios.com/entries/20789066-can-i-play-on-a-kindle-fire';
+
+
+/*prebuilt tweens*/
+function fadeToHalf(){
+    $(this).find('img').tween({opacity:{
+                                                start:100,
+                                                stop:50,
+                                                duration:0.5,
+                                                effect:'easeOut'
+                                            }
+                                        });
+                        $.play();
+}
+
+function fadeToFull(){
+    $(this).find('img').tween({opacity:{
+                                                stop:100,
+                                                duration:0.5,
+                                                effect:'easeOut'
+                                            }
+                                        });
+                        $.play();
+}
+function fadeTo90(){
+    $(this).find('img').tween({opacity:{
+                                                start:100,
+                                                stop:90,
+                                                duration:0.5,
+                                                effect:'easeOut'
+                                            }
+                                        });
+                        $.play();
+}
+
+function quickHide(jo){
+    jo.tween({opacity:{
+                                                stop:0,
+                                                duration:0.1
+                                            }
+                                        });
+                        $.play();
+}
+function normalShow(jo){
+    jo.tween({opacity:{
+                                                stop:100,
+                                                duration:3,
+                                                effect:'easeOut'
+                                            }
+                                        });
+                        $.play();
+}
+function fastShow(jo){
+    jo.tween({opacity:{
+                                                stop:100,
+                                                duration:1,
+                                                effect:'easeOut'
+                                            }
+                                        });
+                        $.play();
+}
+
+function slide_left2(){
+ var auto = 0;
+ if(arguments.length > 0)
+ {
+  auto = arguments[0];
+ }
+
+ $('#pets123').animate({ 'margin-left': '-=264'}, function () {
+
+  f_li = $('<div />').append($('#pets123').children('li:first-child').clone()).html();
+  $('#pets123').children('li:first-child').remove();
+  $('#pets123').append(f_li);
+
+  $('#pets123').css({'margin-left':(parseInt($('#pets123').css('margin-left'))+264)+'px'});
+ });
+
+ if(auto)
+ {
+  setTimeout('slide_left2('+auto+');', 4000);
+ }
+}
+function slide_right2(){
+ var auto = 0;
+ if(arguments.length > 0)
+ {
+  auto = arguments[0];
+ }
+
+ $('#pets123').animate({ 'margin-left': '+=264'}, function () {
+
+  l_li = $('<div />').append($('#pets123').children('li:last-child').clone()).html();
+  $('#pets123').children('li:last-child').remove();
+  $('#pets123').prepend(l_li);
+  $('#pets123').css({'margin-left':(parseInt($('#pets123').css('margin-left'))-264)+'px'});
+ });
+
+ if(auto)
+ {
+  setTimeout('slide_right2('+auto+');', 4000);
+ }
+}
+
+function slide_left(){
+ var auto = 0;
+ if(arguments.length > 0)
+ {
+  auto = arguments[0];
+ }
+
+ $('#slider22').animate({ 'margin-left': '-=382'}, function () {
+
+  f_li = $('<div />').append($('#slider22').children('li:first-child').clone()).html();
+  $('#slider22').children('li:first-child').remove();
+  $('#slider22').append(f_li);
+
+  $('#slider22').css({'margin-left':(parseInt($('#slider22').css('margin-left'))+382)+'px'});
+ });
+
+ if(auto)
+ {
+  setTimeout('slide_left('+auto+');', 4000);
+ }
+}
+function slide_right(){
+ var auto = 0;
+ if(arguments.length > 0)
+ {
+  auto = arguments[0];
+ }
+
+ $('#slider22').animate({ 'margin-left': '+=382'}, function () {
+
+  l_li = $('<div />').append($('#slider22').children('li:last-child').clone()).html();
+  $('#slider22').children('li:last-child').remove();
+  $('#slider22').prepend(l_li);
+  $('#slider22').css({'margin-left':(parseInt($('#slider22').css('margin-left'))-382)+'px'});
+ });
+
+ if(auto)
+ {
+  setTimeout('slide_right('+auto+');', 4000);
+ }
+}
+
+function initFooter(){
+    quickHide($("#footer .othergames a img.txt"));
+
+    $("#footer .othergames a").hover(
+        function(){
+            $(this).find('img.icon').tween({
+                opacity:{
+                    start:100,
+                    stop:25,
+                    duration:0.5,
+                    effect:'easeInOut'
+                }
+            });
+            $(this).find('img.txt').tween({
+                opacity:{
+                    start:0,
+                    stop:100,
+                    duration:0.8,
+                    effect:'easeIn'
+                }
+            });
+            $.play();
+        },
+
+        function(){
+            $(this).find('img.icon').tween({
+                opacity:{
+                    start:25,
+                    stop:100,
+                    duration:0.5,
+                    effect:'easeInOut'
+                }
+            });
+            $(this).find('img.txt').tween({
+                opacity:{
+                    start:100,
+                    stop:0,
+                    duration:0.8,
+                    effect:'easeOut'
+                }
+            });
+            $.play();
+
+        }
+        );
+}
+
 /* Calling Functions in jQuery Wrap */
- jQuery(function(){
+ jQuery(function($){
+
+    /* This code is executed after the DOM has been completely loaded */
+
+    var totWidth=0;
+    var positions = new Array();
+
+    $('#slides .slide').each(function(i){
+
+        /* Traverse through all the slides and store their accumulative widths in totWidth */
+
+        positions[i]= totWidth;
+        totWidth +=445; //$(this).width();
+
+        /* The positions array contains each slide's commulutative offset from the left part of the container */
+
+        if(!$(this).width())
+        {
+            //alert("Please, fill in width & height for all your images!");
+            return true;
+        }
+
+    });
+
+    $('#slides').width(totWidth);
+
+    /* Change the cotnainer div's width to the exact width of all the slides combined */
+
+    $('#menu ul li a').click(function(e,keepScroll){
+
+            /* On a thumbnail click */
+
+            $('li.menuItem').removeClass('act').addClass('inact');
+            $(this).parent().addClass('act');
+
+            var pos = $(this).parent().prevAll('.menuItem').length;
+
+            $('#slides').stop().animate({marginLeft:-positions[pos]+'px'},800);
+            /* Start the sliding animation */
+
+            e.preventDefault();
+            /* Prevent the default action of the link */
+
+
+            // Stopping the auto-advance if an icon has been clicked:
+            if(!keepScroll) clearInterval(itvl);
+    });
+
+    $('#menu ul li.menuItem:first').addClass('act').siblings().addClass('inact');
+    /* On page load, mark the first thumbnail as active */
+
+
+
+    /*****
+     *
+     *  Enabling auto-advance.
+     *
+     ****/
+
+    var current=1;
+    function autoAdvance()
+    {
+        if(current==-1) return false;
+
+        $('#menu ul li a').eq(current%$('#menu ul li a').length).trigger('click',[true]);   // [true] will be passed as the keepScroll parameter of the click function on line 28
+        current++;
+    }
+
+    // The number of seconds that the slider will auto-advance in:
+
+    var changeEvery =4;
+
+    var itvl = setInterval(function(){autoAdvance()},changeEvery*1000);
 
     /* BX Slider */
     var forced_size=false;
@@ -120,13 +389,15 @@
     /*header animation*/
     function cycleImages(){
         //console.log('header anim');
-          var $active = $('#chars .active');
-          var $next = ($active.next().length > 0) ? $active.next() : $('#chars img:first');
-          $next.css('z-index',2);//move the next image up the pile
-          $active.fadeOut(1500,function(){//fade out the top image
-          $active.css('z-index',1).show().removeClass('active');//reset the z-index and unhide the image
-              $next.css('z-index',3).addClass('active');//make the next image the top one
-          });}
+        var $active = $('#chars .active');
+        var $next = ($active.next().length > 0) ? $active.next() : $('#chars img:first');
+        $next.css('z-index',2);//move the next image up the pile
+        $active.fadeOut(1500,
+        function(){//fade out the top image
+            $active.css('z-index',1).show().removeClass('active');//reset the z-index and unhide the image
+            $next.css('z-index',3).addClass('active');//make the next image the top one
+        });
+    }
 
     /*Check Browser*/
     $(function(){
@@ -355,10 +626,6 @@
 
 
 
-
-
-
-
                     /*video fancybox*/
                     $('#s_1 #video a').removeClass('fancybox');
                     $('#video a.fancybox').fancybox({
@@ -425,4 +692,28 @@
             });
         }
 
+        slide_left2(1);
+
+        $("#pets123").swipe({
+                swipeLeft:function(){
+                    slide_left2();
+                },
+                swipeRight:function(){
+
+
+                    slide_right2();
+                }
+
+            });
+
+        slide_left(1);
+
+        $("#slider22").swipe({
+                swipeLeft:function(){
+                    slide_left();
+                },
+                swipeRight:function(){
+                    slide_right();
+                }
+            });
  });
