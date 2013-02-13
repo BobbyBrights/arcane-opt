@@ -586,6 +586,13 @@ p {
   left: 150px;
   top: 32px;
   width: 100%; }
+  #badges ul {
+    list-style: none;
+    margin: 0;
+    margin: 16px 0 0 32px;
+    padding: 0;
+    position: absolute;
+    top: 82px; }
 
 #playnow {
   display: block;
@@ -594,11 +601,6 @@ p {
   position: absolute;
   top: 30px;
   right: 320px; }
-
-#badges ul {
-  margin: 16px 0 0 32px;
-  position: absolute;
-  top: 82px; }
 
 #badges h4.myth {
   font-size: 16px;
@@ -992,7 +994,8 @@ p {
   font-size: 28px;
   position: absolute;
   text-align: center;
-  width: 100%; }
+  width: 100%;
+  margin: 0; }
 
 #footer {
   background: url(../img/footer-back.png) no-repeat center 31px;
@@ -1930,9 +1933,6 @@ hr {
 /*
  * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
  */
-img {
-  vertical-align: middle; }
-
 /*
  * Remove default fieldset styles.
  */
@@ -1959,6 +1959,11 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+.infiniteCarousel ul {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
