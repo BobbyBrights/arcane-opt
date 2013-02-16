@@ -1,0 +1,1 @@
+function mycarousel_initCallback(e){e.buttonNext.bind("click",function(){e.startAuto(0)});e.buttonPrev.bind("click",function(){e.startAuto(0)});e.clip.hover(function(){e.stopAuto()},function(){e.startAuto()})}jQuery(document).ready(function(){jQuery("#mycarousel").jcarousel({auto:2,wrap:"last",initCallback:mycarousel_initCallback})});
