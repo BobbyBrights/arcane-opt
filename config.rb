@@ -8,8 +8,8 @@ images_dir = "img"
 javascripts_dir = "js"
 fonts_dir = "fonts"
 
-output_style = :nested
-environment = :development
+output_style = :compressed
+environment = :production
 
 relative_assets = true
 

@@ -27,12 +27,8 @@ src: url('css/fonts/gill_sans.eot?#iefix') format('embedded-opentype'),
 </style>
 <![endif]-->
 
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="js/jquery.queryloader2.js"></script>
-<script type="text/javascript" src="js/jquery.bxslider.js"></script>
-<script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
-<script type="text/javascript" src="js/helpers/jquery.fancybox-media.js"></script>
+
+<script src="js/js-plugins-ck.js"></script>
 <script>
 		//configure options here:
 		var rwd_images = {
@@ -144,14 +140,9 @@ function resized(i, width){
 <script type="text/javascript" src="js/jstween.min.js"></script>
 <script type="text/javascript" src="js/cufon-yui.js"></script>
 <script type="text/javascript" src="js/myth.js"></script>
-<script type="text/javascript">
-
-	Cufon.replace('.myth');
 
 
-</script>
-
-
+<script src="js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 
 <body>
@@ -180,7 +171,7 @@ function resized(i, width){
 	<img  src="img/loader.gif" id="loader"/>
 	<div id="top">
 		<div id="top-wrapper">
-			<a id="sts-logo" href="http://www.spacetimestudios.com" target="_blank"><img src="img/sts-logo.png" alt="Spacetime Studios"></a>
+			<a id="sts-logo" href="http://www.spacetimestudios.com" target="_blank">Space Times Studios</a>
 			<ul id="top-menu">
 				<li><a href="http://support.spacetimestudios.com" target="_blank">SUPPORT</a></li>
 				<li><a href="http://www.spacetimestudios.com/forumdisplay.php?98-Arcane-Legends" target="_blank">FORUMS</a></li>
@@ -1026,7 +1017,6 @@ function preloadHeader(){
 				}
 			});*/
 }
-
 function checkAllLoaded()
 {
 	if(header_loaded && content_loaded)
@@ -1178,8 +1168,12 @@ function loadProperImages(atr)
 
 	});
 
-
-
 	</script>
+	<script type="text/javascript">
+
+	Cufon.replace('.myth');
+
+
+</script>
 </body>
 </html>

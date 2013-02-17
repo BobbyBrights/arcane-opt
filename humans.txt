@@ -3,13 +3,14 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
+    Performance Optimization by: Shajed Evan
+    Profile: http:///behance.net/evanshajed
+    Twitter: http://twitter.com/evanshajed
+    Location: Dhaka,Bangladesh
 
-# THANKS
-
-    <name>
 
 # TECHNOLOGY COLOPHON
 
     HTML5, CSS3
     Normalize.css, jQuery, Modernizr
+    SASS, CodeKit

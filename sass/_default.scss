@@ -12,8 +12,6 @@ body{
     position: relative;
 }
 
-
-
 body.loaded{
     background: url('../img/back.jpg') no-repeat top center black;
     margin-right: 0px !important;
@@ -67,7 +65,7 @@ p {
 }
 
 
-
+@import "logo/*.png";
 /*top*/
 #top{
     width: 100%;
@@ -98,9 +96,10 @@ p {
     margin: 6px 105px 0 6px;
     display: block;
     float: left;
-    img{
-        vertical-align: top;
-    }
+    width:237px;
+    height:18px;
+    @include logo-sprite(sts-logo);
+    text-indent: -999999px;
 }
 
 #top-menu li:first-child {
@@ -127,8 +126,6 @@ p {
     margin-left: 15px;
 }
 
-
-
 /*wrapper*/
 
 #wrapper{
@@ -137,8 +134,6 @@ p {
     position: relative;
     z-index: 5;
 }
-
-
 
 
 
@@ -295,6 +290,9 @@ p {
     color: #481100;
     text-align: justify;
 }
+
+@import "cont-bg/*.png";
+
 .cont{
     padding: 98px 20px 0 35px;
     background: url('../img/cont-back.png') no-repeat top center transparent;
@@ -322,14 +320,14 @@ p {
     left: 45%;
 }
 .frame {
-    background: url(../img/player-canvas.png) no-repeat 0 0;
+    @include cont-bg-sprite(player-canvas);
     width: 480px;
     height: 397px;
 }
 .frame img {
 }
 .video_frame{
-    background: url(../img/video-frame.png) no-repeat 0 0;
+    @include cont-bg-sprite(video-frame);
     width: 484px;
     height: 336px;
 
@@ -381,8 +379,11 @@ p {
     margin: 0 0 15px 0;
     width: 264px;
     height: 262px;
-    background: url('../img/slider-frame.png') no-repeat 0 21px transparent;
+    @include cont-bg-sprite(slider-frame);
+    display:block;
+    background-position: 0 21px;
 }
+
 #pets li h3.myth {
     text-align: center;
     position: absolute;
@@ -440,7 +441,9 @@ p {
     margin: 0 0 15px 0;
     width: 264px;
     height: 262px;
-    background: url('../img/slider-frame.png') no-repeat 0 21px transparent;
+    @include cont-bg-sprite(slider-frame);
+    display:block;
+    background-position: 0 21px;
 }
 #pets123 li h3.myth {
     text-align: center;
@@ -570,9 +573,8 @@ p {
     margin-right: 10px;
 }
 
-
 #explore{
-    background: url('../img/explore-back.jpg') no-repeat bottom center transparent;
+    background: url(../img/explore-back.jpg) no-repeat bottom center transparent;
 }
 #explore .title {
     font-size: 32px;
@@ -998,7 +1000,9 @@ background:none;
 }
 #s_1 #slider_wrapper li {
     position: relative!important;
-    background: url('../img/video-frame.png') no-repeat top center transparent;
+    @include cont-bg-sprite(video-frame);
+    background-position: top center;
+    background:transparent;
     width: 375px !important;
     height: 267px;
     background-size: 100%;
