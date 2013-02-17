@@ -1,0 +1,8 @@
+@mixin equal-icon($size: 100px){
+    width: $size;
+    height: $size;
+}
+@mixin icon-size($width:100px,$height:100px){
+    width:$width;
+    height:$height;
+}

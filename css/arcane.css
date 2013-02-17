@@ -580,6 +580,9 @@ p {
   margin: 0 auto;
   top: -32px; }
 
+.mobi-badges-sprite, #badges a.g-btn, #badges a.c-btn, #badges a.ios-btn, #badges a#playnow, .title span.title-badge {
+  background: url('../img/mobi-badges-sfe9fa3e3a7.png') no-repeat; }
+
 #badges {
   position: relative;
   z-index: 10;
@@ -593,10 +596,28 @@ p {
     padding: 0;
     position: absolute;
     top: 82px; }
+  #badges a {
+    display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: middle;
+    *vertical-align: auto;
+    zoom: 1;
+    *display: inline;
+    width: 125px;
+    height: 38px;
+    text-indent: -99999px; }
+    #badges a.g-btn {
+      background-position: 0 -380px; }
+    #badges a.c-btn {
+      background-position: 0 -342px; }
+    #badges a.ios-btn {
+      background-position: 0 -303px; }
+  #badges a#playnow {
+    width: 177px;
+    height: 167px;
+    background-position: 0 0; }
 
 #playnow {
-  display: block;
-  width: 177px;
   margin: 37px 0 0 3px;
   position: absolute;
   top: 30px;
@@ -708,7 +729,11 @@ p {
   top: 65px;
   left: 3px; }
 
-.title img {
+.title span.title-badge {
+  display: block;
+  width: 102px;
+  height: 99px;
+  background-position: 0 -167px;
   position: absolute;
   top: -68px;
   left: 45%; }
