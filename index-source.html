@@ -302,22 +302,6 @@ function slide_right2(){
   setTimeout('slide_right2('+auto+');', 4000);
  }
 }
-$(document).ready(function(){
-    slide_left2(1);
-
-    $("#pets123").swipe({
-                swipeLeft:function(){
-                    slide_left2();
-                },
-                swipeRight:function(){
-
-
-                    slide_right2();
-                }
-
-            });
-
-    });
 </script>
 
             <div class="cont" id="pet">
@@ -457,26 +441,6 @@ function slide_right(){
   setTimeout('slide_right('+auto+');', 4000);
  }
 }
-
-
-$(document).ready(function(){
-    slide_left(1);
-
-    $("#slider22").swipe({
-                swipeLeft:function(){
-                    slide_left();
-                },
-                swipeRight:function(){
-
-
-                    slide_right();
-                }
-
-            });
-
-    });
-
-
 
 </script>
 
@@ -994,6 +958,32 @@ function loadProperImages(atr)
         quickHide($('#branch-left'));
         quickHide($('#branch-right'));
         preloadHeader();
+        slide_left2(1);
+
+    $("#pets123").swipe({
+                swipeLeft:function(){
+                    slide_left2();
+                },
+                swipeRight:function(){
+
+
+                    slide_right2();
+                }
+
+            });
+    slide_left(1);
+
+    $("#slider22").swipe({
+                swipeLeft:function(){
+                    slide_left();
+                },
+                swipeRight:function(){
+
+
+                    slide_right();
+                }
+
+            });
         initFooter();
 
 
