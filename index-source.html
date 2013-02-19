@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Arcane Legends</title>
+        <meta name="description" content="">
+        <meta name="viewport" id="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="css/arcane.css">
+        <link href='http://fonts.googleapis.com/css?family=Carme' rel='stylesheet' type='text/css'>
+        <link rel="shortcut icon" href="img/favicon.ico">
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
+
+<script type="text/javascript" src="script.js"></script>
+<!--[if IE]>
+    <style type="text/css">
+@font-face {
+font-family: 'GillSans-Regular';
+src: url(css/fonts/gill_sans.eot);
+src: url('css/fonts/gill_sans.eot?#iefix') format('embedded-opentype'),
+}
+</style>
+<![endif]-->
+
+
+<script src="js/js-plugins-ck.js"></script>
+<script>
+        //configure options here:
+        var rwd_images = {
+
+            widthBreakPoint: 768
+        };
+    </script>
+<script src="js/responsiveimgs.js"></script>
+
+<script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+
+<script type="text/javascript">
+
+
+var forced_size=false;
+var curr_width;
+var curr_i;
+var slider_bx;
+function scrollImages(distance, duration)
+{
+    //$("#slider").css("-webkit-transition-duration", (duration/1000).toFixed(1) + "s");
+
+    //inverse the number we set in the css
+    //var value = (distance<0 ? "" : "-") + Math.abs(distance).toString();
+
+    //$("#slider").css("-webkit-transform", "translate3d("+value +"px,0px,0px)");
+
+    if(slider_bx)
+        slider_bx.goToSlide(0);
+}
+
+function resized(i, width){
+    var vpt="";
+    console.log('i : '+i +'\nwidth : '+width);
+    document.documentElement.id = 's_' + i;
+    //alert('current width : '+width);
+    var zoom_level = Math.round((width/480)*100)/100;
+    //alert('zoom_level : '+zoom_level);
+    //if(curr_width != width)
+    //{
+
+
+
+        if(i==1)
+        {
+
+                var vp = document.getElementsByName('viewport')[0];
+                if(vp){
+                    vp.parentNode.removeChild(vp);
+                }
+
+
+                vpt="<meta name='viewport' id='viewport' content='width=480' />";
+                if(forced_size){
+                    vpt="<meta name='viewport' id='viewport' content='width=device-width' />";
+                }
+
+
+                $('head').prepend(vpt);
+
+
+            curr_width = window.screen.width;;
+            maxImages=5;
+            loadProperImages('sml');
+
+        }
+        else
+        {
+            //$(window).resize();
+
+            if(isTierTablet){
+                $('#pet').addClass('tablet');
+            }
+            else{
+                $('#pet').removeClass('tablet');
+
+            }
+            var vp = document.getElementsByName('viewport')[0];
+            if(vp){
+                vp.parentNode.removeChild(vp);
+            }
+            vpt="<meta name='viewport' content='width=1024>"
+            $('head').append(vpt);
+            curr_width = window.screen.width;
+            maxImages=1;
+            if(slider_bx)
+                slider_bx.resizeWidth(445);
+
+            loadProperImages('lrg');
+            if(scrollImages)
+                scrollImages(0,500);
+
+        }
+
+
+
+
+    //}
+
+}
+
+</script>
+
+<script type="text/javascript" src="js/jstween.min.js"></script>
+<script type="text/javascript" src="js/cufon-yui.js"></script>
+<script type="text/javascript" src="js/myth.js"></script>
+
+<script src="js/vendor/modernizr-2.6.2.min.js"></script>
+</head>
+
+<body>
+    <div id="popup_wrapper">
+        <div id="popup">
+            <a href="#" class="closepop"></a>
+            <!--<div class="leftpop">
+                <h4 class="myth">COMING SOON</h4>
+                <p>Arcane Legends is coming soon to the Amazon Appstore</p>
+
+                <a href="#"><img src="img/amazon-btn.png" alt="IOS App Store"></a>
+            </div>-->
+
+            <div class="rightpop">
+                <h4 class="myth">AVAILABLE NOW</h4>
+                <p>In the meantime you can play on an Android or iOS device or on PC/Mac/Linux machine via Chrome or Flash</p>
+                <a href="https://play.google.com/store/apps/details?id=sts.al&hl=en" target="_blank"><img src="img/google-play-btn.png" alt="Google Play"></a>
+                <a href="https://chrome.google.com/webstore/detail/arcane-legends/ibmlkgieigeddcedpbijnpojheoddido" target="_blank"><img src="img/chrome-btn.png" alt="Chrome Web Store"></a>
+                <a href="http://itunes.apple.com/us/app/arcane-legends/id543335870"><img src="img/app-store-btn.png" alt="IOS App Store"></a>
+            </div>
+            <div class="bottompop">
+                <p>To play on a Kindle Fire, <a href="http://support.spacetimestudios.com/entries/20789066-can-i-play-on-a-kindle-fire" target="_blank">click here</a> to read how to sideload the game.</p>
+            </div>
+        </div>
+    </div>
+    <img  src="img/loader.gif" id="loader"/>
+    <div id="top">
+        <div id="top-wrapper">
+            <a id="sts-logo" href="http://www.spacetimestudios.com" target="_blank">Space Times Studios</a>
+            <ul id="top-menu">
+                <li><a href="http://support.spacetimestudios.com" target="_blank">SUPPORT</a></li>
+                <li><a href="http://www.spacetimestudios.com/forumdisplay.php?98-Arcane-Legends" target="_blank">FORUMS</a></li>
+                <li><a href="https://store.arcanelegendsgame.com/WebStore/store.jsp" target="_blank">BUY PLATINUM</a></li>
+
+            </ul>
+            <ul id="social">
+                <li><a href="http://www.facebook.com/ArcaneLegends" target="_blank"><img src="img/fb-icon.png" alt="Facebook"></a></li>
+                <li><a href="https://plus.google.com/117906712780811671318" target="_blank"><img src="img/g-icon.png" alt="Google+"></a></li>
+                <li><a href="http://www.youtube.com/SpacetimeStudios" target="_blank"><img src="img/yt-icon.png" alt="Youtube"></a></li>
+            </ul>
+
+        </div>
+
+    </div><!--end top-->
+
+    <!--<div id="grad-left">
+
+    </div>
+    <div id="grad-right"></div>-->
+    <div id="header">
+            <div id="badges" class="no-display">
+                <a id="playnow" href="#playnow">Play Now</a>
+
+                <h4 class="myth">AVAILABLE ON</h4>
+                <ul>
+                    <li><a class="g-btn" href="https://play.google.com/store/apps/details?id=sts.al&hl=en" target="_blank">Google Play</a></li>
+                    <li><a class="c-btn" href="https://chrome.google.com/webstore/detail/arcane-legends/ibmlkgieigeddcedpbijnpojheoddido" target="_blank">Chrome Web Store</a></li>
+                    <li><a class="ios-btn" href="http://itunes.apple.com/us/app/arcane-legends/id543335870" target="_blank">App Store</a></li>
+                </ul>
+            </div><!--end badges-->
+
+            <div id="chars">
+                <img src="img/chars/sorcerer.r.jpg?full=img/chars/sorcerer.jpg" data-lrg="img/chars/sorcerer.jpg" data-sml="img/chars/sorcerer.r.jpg" alt="Sorcerer">
+                <img src="img/chars/warrior.r.jpg?full=img/chars/warrior.jpg" data-lrg="img/chars/warrior.jpg" data-sml="img/chars/warrior.r.jpg" alt="Warrior" >
+                <img class="active" src="img/chars/rouge.r.jpg?full=img/chars/rouge.jpg" data-lrg="img/chars/rouge.jpg" data-sml="img/chars/rouge.r.jpg" alt="Dragon">
+            </div><!--end chars-->
+            <!--
+            <div id="logo">
+                <img src="img/logo.png" alt="Arcane Legends">
+            </div>
+            -->
+    </div><!--end header-->
+    <div id="wrapper">
+
+
+
+        <div id="content">
+            <img id="branch-left" src="img/branch-left.png"/>
+            <img id="branch-right" src="img/branch-right.png"/>
+
+            <div class="cont" id="live">
+                <h2 class="title myth"><span class="title-badge"></span>CO-OP RPG ADVENTURE</h2>
+
+                <div class="cont-right" id="video">
+                    <div class="video_frame">
+
+                        <!--<iframe width="445" height="302" src="http://www.youtube.com/embed/KaF7J1iV44I" frameborder="0" allowfullscreen></iframe>-->
+
+
+                        <a href="http://www.youtube.com/embed/KaF7J1iV44I?autoplay=1" class="fancybox" target="_blank"><img src="img/video.jpg" alt=""></a>
+
+                    </div>
+                </div>
+
+                <div class="cont-left">
+                    <p>Team up with friends from all over the world in this new online co-operative RPG from Spacetime Studios, creators of the smash-hit Pocket Legends. </p>
+                    <p>Play this FREE game that unites desktop and mobile players across a huge variety of devices (iOS, Android, PC and Mac).</p>
+
+                    <p>Arcane Legends is the ultimate mobile multiplayer experience!</p>
+                    <p><a href="" class="button myth">PLAY NOW!</a></p>
+                </div>
+
+
+            </div>
+<script type="text/javascript" charset="utf-8">
+(jQuery);
+
+/*$(document).ready(function () {
+    // THIS IS NEW CODE FOR THE AUTOMATIC INFINITE CAROUSEL
+    var autoscrolling = true;
+
+    $('.infiniteCarousel').infiniteCarousel().mouseover(function () {
+        autoscrolling = false;
+    }).mouseout(function () {
+        autoscrolling = true;
+    });
+
+    setInterval(function () {
+        if (autoscrolling) {
+            $('.infiniteCarousel').trigger('next');
+        }
+    }, 2000);
+});*/
+
+function slide_left2(){
+ var auto = 0;
+ if(arguments.length > 0)
+ {
+  auto = arguments[0];
+ }
+
+ $('#pets123').animate({ 'margin-left': '-=264'}, function () {
+
+  f_li = $('<div />').append($('#pets123').children('li:first-child').clone()).html();
+  $('#pets123').children('li:first-child').remove();
+  $('#pets123').append(f_li);
+
+  $('#pets123').css({'margin-left':(parseInt($('#pets123').css('margin-left'))+264)+'px'});
+ });
+
+ if(auto)
+ {
+  setTimeout('slide_left2('+auto+');', 4000);
+ }
+}
+function slide_right2(){
+ var auto = 0;
+ if(arguments.length > 0)
+ {
+  auto = arguments[0];
+ }
+
+ $('#pets123').animate({ 'margin-left': '+=264'}, function () {
+
+  l_li = $('<div />').append($('#pets123').children('li:last-child').clone()).html();
+  $('#pets123').children('li:last-child').remove();
+  $('#pets123').prepend(l_li);
+  $('#pets123').css({'margin-left':(parseInt($('#pets123').css('margin-left'))-264)+'px'});
+ });
+
+ if(auto)
+ {
+  setTimeout('slide_right2('+auto+');', 4000);
+ }
+}
+$(document).ready(function(){
+    slide_left2(1);
+
+    $("#pets123").swipe({
+                swipeLeft:function(){
+                    slide_left2();
+                },
+                swipeRight:function(){
+
+
+                    slide_right2();
+                }
+
+            });
+
+    });
+</script>
+
+            <div class="cont" id="pet">
+                <h2 class="title myth"><span class="title-badge"></span>CHOOSE YOUR PET!</h2>
+                <div id="pets_wrapper">
+                    <div class="infiniteCarousel">
+                      <div class="wrapper" style="width:792px;overflow:hidden;">
+                        <ul id="pets123" style="width:2376px;margin-left:-264px">
+                          <li>
+                            <img src="img/wolf.png" class="wolf"/>
+                            <h3 class="mpat">WOLF PUP</h3>
+                        </li>
+                        <li>
+                            <img src="img/drake.png" class="drake"/>
+                            <h3 class="mpat">DRAKE</h3>
+                        </li>
+                        <li>
+                            <img src="img/panther.png" class="panther" />
+                            <h3 class="mpat">PANTHER</h3>
+                        </li>
+                        <li>
+                            <img src="img/owl.png" class="owl" />
+                            <h3 class="mpat">OWL</h3>
+                        </li>
+                        <li>
+                            <img src="img/turtle.png" class="turtle" />
+                            <h3 class="mpat" >TURTLE</h3>
+                        </li>
+                        <li>
+                            <img src="img/deer.png" class="deer" />
+                            <h3 class="mpat" >DEER</h3>
+                        </li>
+                        <li>
+                            <img src="img/ram.png" class="ram" />
+                            <h3 class="mpat">RAM</h3>
+                        </li>
+                        <li>
+                            <img src="img/frog.png" class="frog" />
+                            <h3 class="mpat">FROG</h3>
+                        </li>
+                        <li>
+                            <img src="img/dodo.png" class="dodo" />
+                            <h3 class="mpat">DODO</h3>
+                        </li>
+                        </ul>
+                      </div>
+                      <div class="bx-controls-auto" id="left_rgt_ar">
+                        <a href="javascript:void(0)" onclick="slide_left2()" class="bx-prev">Start</a>
+                        <a href="javascript:void(0)" onclick="slide_right2()" class="bx-next">Stop</a>
+                    </div>
+                    </div>
+                </div>
+                <p style="margin-top:15px;">Is your companion powerful in battle like a Wolf, a silent stalker like a Panther, or the world’s fastest Turtle? In Arcane Legends, you will collect a stable-full of powerful and mystical pets to aid you in your adventures. Each animal provides a different set of combat skills and buffs, so you can pick the one that suits your play style perfectly. Grow, feed, and play with dozens of different pets with unique attacks and special bonuses! </p>
+                <p><a href="" class="button myth">CHOOSE YOUR PET</a></p>
+            </div>
+
+            <div class="cont" id="explore">
+                <h2 class="title myth"><span class="title-badge"></span>EXPLORE ARLOR</h2>
+
+                <div class="cont-left">
+
+                    <div class="frame">
+
+                        <div id="gallery">
+
+                            <div id="slides">
+
+                            <div class="slide"><img src="img/crs/award.png" alt=""></div>
+                            <div class="slide"><img src="img/crs/arcane.png" alt=""></div>
+                            <div class="slide"><img src="img/crs/fight.png" alt=""></div>
+                            <div class="slide"><img src="img/crs/pvp.png" alt=""></div>
+                            <div class="slide"><img src="img/crs/visuals.png" alt=""></div>
+
+                            </div>
+
+                            <div id="menu">
+
+                            <ul>
+                                <li class="menuItem"><a href="#"><img src="img/crs/th/award.png" /></a> </li>
+                                <li class="menuItem"><a href="#"><img src="img/crs/th/arcane.png" /></a></li>
+                                <li class="menuItem"><a href="#"><img src="img/crs/th/fight.png" alt=""></a></li>
+                                <li class="menuItem"> <a href="#"><img src="img/crs/th/pvp.png" alt=""></a></li>
+                                <li class="menuItem"> <a href="#"><img src="img/crs/th/visuals.png" alt=""></a></li>
+                            </ul>
+
+
+                            </div>
+
+                          </div>
+
+                    </div>
+
+
+
+
+
+
+<script>
+function slide_left(){
+ var auto = 0;
+ if(arguments.length > 0)
+ {
+  auto = arguments[0];
+ }
+
+ $('#slider22').animate({ 'margin-left': '-=382'}, function () {
+
+  f_li = $('<div />').append($('#slider22').children('li:first-child').clone()).html();
+  $('#slider22').children('li:first-child').remove();
+  $('#slider22').append(f_li);
+
+  $('#slider22').css({'margin-left':(parseInt($('#slider22').css('margin-left'))+382)+'px'});
+ });
+
+ if(auto)
+ {
+  setTimeout('slide_left('+auto+');', 4000);
+ }
+}
+function slide_right(){
+ var auto = 0;
+ if(arguments.length > 0)
+ {
+  auto = arguments[0];
+ }
+
+ $('#slider22').animate({ 'margin-left': '+=382'}, function () {
+
+  l_li = $('<div />').append($('#slider22').children('li:last-child').clone()).html();
+  $('#slider22').children('li:last-child').remove();
+  $('#slider22').prepend(l_li);
+  $('#slider22').css({'margin-left':(parseInt($('#slider22').css('margin-left'))-382)+'px'});
+ });
+
+ if(auto)
+ {
+  setTimeout('slide_right('+auto+');', 4000);
+ }
+}
+
+
+$(document).ready(function(){
+    slide_left(1);
+
+    $("#slider22").swipe({
+                swipeLeft:function(){
+                    slide_left();
+                },
+                swipeRight:function(){
+
+
+                    slide_right();
+                }
+
+            });
+
+    });
+
+
+
+</script>
+
+    <div class="slider31" style="overflow: hidden; width: 480px; margin-left: -20px; margin-top: 20px;">
+        <ul id="slider22" style="width: 2674px;margin-left:-334px">
+                        <li style="float: left; list-style: none outside none;" class="bx-clone">
+                            <img alt="" src="img/crs/visuals.png">
+                        </li>
+                        <li style="float: left; list-style: none outside none;" class="bx-clone">
+                            <img alt="" src="img/crs/award.png">
+                        </li>
+                        <li style="float: left; list-style: none outside none;" class="bx-clone">
+                            <img alt="" src="img/crs/arcane.png">
+                        </li>
+                        <li style="float: left; list-style: none outside none;" class="bx-clone">
+                            <img alt="" src="img/crs/fight.png">
+                        </li>
+                        <li style="float: left; list-style: none outside none;" class="bx-clone">
+                            <img alt="" src="img/crs/pvp.png">
+                        </li>
+                        <li style="float: left; list-style: none outside none;" class="bx-clone">
+                            <img alt="" src="img/crs/visuals.png">
+                        </li>
+                        <li style="float: left; list-style: none outside none;" class="bx-clone">
+                            <img alt="" src="img/crs/award.png">
+                        </li>
+        </ul>
+    </div>
+
+
+                </div>
+                <div class="cont-right">
+                    <p>Discover a massive online world full of danger and intrigue. Carve out your destiny in the persistent world of Arlor as a deadly rogue, mystical sorcerer, or hulking warrior. </p>
+
+                    <p>Battle foul goblins, trolls, necromancers and much more in your quest for glory and gold. Enjoy cinematic story-telling, dynamic and fast-paced combat, and a brand-new pets system.</p>
+
+                    <p>Seek out Arcane Legends now!</p>
+                    <a href="" class="button myth">EXPLORE!</a>
+                </div>
+
+            </div><!--explore end-->
+        </div><!--end content-->
+        <div class="clr"></div>
+
+        <div id="footer">
+            <p><a id="poweredby" class="footer-logo" href="http://www.spacetimestudios.com" target="_blank">Spacetime Stios</a></p>
+            <script>
+                function initFooter()
+{
+    quickHide($("#footer .othergames a img.txt"));
+
+    $("#footer .othergames a").hover(
+        function(){
+            $(this).find('img.icon').tween({
+                opacity:{
+                    start:100,
+                    stop:25,
+                    duration:0.5,
+                    effect:'easeInOut'
+                }
+            });
+            $(this).find('img.txt').tween({
+                opacity:{
+                    start:0,
+                    stop:100,
+                    duration:0.8,
+                    effect:'easeIn'
+                }
+            });
+            $.play();
+        },
+
+        function(){
+            $(this).find('img.icon').tween({
+                opacity:{
+                    start:25,
+                    stop:100,
+                    duration:0.5,
+                    effect:'easeInOut'
+                }
+            });
+            $(this).find('img.txt').tween({
+                opacity:{
+                    start:100,
+                    stop:0,
+                    duration:0.8,
+                    effect:'easeOut'
+                }
+            });
+            $.play();
+
+        }
+        );
+}
+
+</script>
+            <p class="othergames">
+
+                <a href="http://www.starlegends.com/" target="_blank"><img class="icon" src="img/star-legends.png"/><img class="txt" src="img/star-legends-txt.png"/></a>
+                <a href="http://www.pocketlegends.com/" target="_blank"><img class="icon" src="img/pocket-legends.png"/><img class="txt" src="img/pocket-legends-txt.png"/></a>
+                <a href="http://www.darklegends.com/" target="_blank"><img class="icon" src="img/dark-legends.png"/><img class="txt" src="img/dark-legends-txt.png"/></a>
+            </p>
+            <ul id="social">
+                <li><a href="http://www.facebook.com/ArcaneLegends" target="_blank"><img src="img/fb-icon.png" alt="Facebook"></a></li>
+                <li><a href="https://plus.google.com/117906712780811671318" target="_blank"><img src="img/g-icon.png" alt="Google+"></a></li>
+                <li><a href="http://www.youtube.com/SpacetimeStudios" target="_blank"><img src="img/yt-icon.png" alt="Youtube"></a></li>
+            </ul>
+            <p class="copyright">Spacetime Studios © 2013</p>
+            <a href="#" class="switch_mobile">Switch to Mobile View</a>
+            <a href="#" class="switch_desktop">Switch to Desktop View</a>
+        </div><!-- end footer-->
+
+
+    </div><!--end wrapper-->
+
+<script type="text/javascript" src="js/jquery.client.js"></script>
+<script type="text/javascript" src="js/mdetect.js"></script>
+<script type="text/javascript">
+
+
+/*Links*/
+var googleplay_link = 'https://play.google.com/store/apps/details?id=sts.al&hl=en';
+var chrome_link ='https://chrome.google.com/webstore/detail/arcane-legends/ibmlkgieigeddcedpbijnpojheoddido';
+var appstore_link ='http://itunes.apple.com/us/app/arcane-legends/id543335870';
+var kindle_link ='http://support.spacetimestudios.com/entries/20789066-can-i-play-on-a-kindle-fire';
+
+
+/*prebuilt tweens*/
+function fadeToHalf(){
+    $(this).find('img').tween({opacity:{
+                                                start:100,
+                                                stop:50,
+                                                duration:0.5,
+                                                effect:'easeOut'
+                                            }
+                                        });
+                        $.play();
+}
+
+function fadeToFull(){
+    $(this).find('img').tween({opacity:{
+                                                stop:100,
+                                                duration:0.5,
+                                                effect:'easeOut'
+                                            }
+                                        });
+                        $.play();
+}
+function fadeTo90(){
+    $(this).find('img').tween({opacity:{
+                                                start:100,
+                                                stop:90,
+                                                duration:0.5,
+                                                effect:'easeOut'
+                                            }
+                                        });
+                        $.play();
+}
+
+function quickHide(jo){
+    jo.tween({opacity:{
+                                                stop:0,
+                                                duration:0.1
+                                            }
+                                        });
+                        $.play();
+}
+function normalShow(jo){
+    jo.tween({opacity:{
+                                                stop:100,
+                                                duration:3,
+                                                effect:'easeOut'
+                                            }
+                                        });
+                        $.play();
+}
+function fastShow(jo){
+    jo.tween({opacity:{
+                                                stop:100,
+                                                duration:1,
+                                                effect:'easeOut'
+                                            }
+                                        });
+                        $.play();
+}
+
+
+function open_popup()
+{
+    $('#popup_wrapper').css('display','block');
+    $('#popup_wrapper').tween({opacity:{
+                                                stop:100,
+                                                duration:1,
+                                                effect:'easeOut'
+
+                                            }
+                                        });
+                        $.play();
+}
+
+function close_popup()
+{
+    $('#popup_wrapper').tween({opacity:{
+                                                stop:0,
+                                                duration:0.5,
+                                                effect:'easeOut',
+                                                onStop: function(){
+                                                    $('#popup_wrapper').css('display','none');
+                                                  }
+                                            }
+                                        });
+                        $.play();
+}
+
+/*header animation*/
+function cycleImages(){
+    //console.log('header anim');
+      var $active = $('#chars .active');
+      var $next = ($active.next().length > 0) ? $active.next() : $('#chars img:first');
+      $next.css('z-index',2);//move the next image up the pile
+      $active.fadeOut(1500,function(){//fade out the top image
+      $active.css('z-index',1).show().removeClass('active');//reset the z-index and unhide the image
+          $next.css('z-index',3).addClass('active');//make the next image the top one
+      });
+    }
+
+
+
+/*Check Browser*/
+$(function(){
+    if($.client.browser == 'Chrome' && navigator.userAgent.toLowerCase().indexOf('mobile')<0){
+        $("a#playnow, a.button").attr('href', chrome_link).attr('target', "_blank");
+
+
+    }
+    else{
+
+        if(DetectKindle())
+        {
+            //$("a#playnow, a.button").attr('href', "#").click(open_popup);
+            $("a#playnow, a.button").attr('href', kindle_link).attr('target','_blank');
+
+
+        }
+        else if(DetectAndroid())
+        {
+            $("a#playnow, a.button").attr('href', googleplay_link).attr('target','_blank');
+
+        }
+
+        else if(DetectIos()){
+            $("a#playnow, a.button").attr('href', appstore_link).attr('target','_blank');
+            //$("a#playnow, a.button").attr('href', "#").click(open_popup);
+
+        }
+        else
+        {
+            //$("a#playnow, a.button").attr('target', "_blank");
+            $("a#playnow, a.button").attr('href', "http://account.spacetimestudios.com/arcanelegends/").attr('target', "_blank");;
+        }
+    }
+});
+
+/*resize*/
+$(window).resize(function(e){
+
+    var hd_w = $('#header').width();
+    var d_w = document.width;
+    //if(DetectMobileLong())
+    //  d_w = window.screen.width;
+
+
+    if(d_w<hd_w && d_w>=1100){
+        $('#chars img').css({left:(d_w-hd_w)/2+'px'});
+        //$('#badges h5.myth').addClass('narrower');
+        //$('#badges ul.cs_list').addClass('narrower');
+        //$('#s_0 #badges').css({left:'8%'});
+
+
+    }
+    else if(d_w<1100){
+        $('#s_0 #badges').css({left:'4%'});
+        $('#chars img').css({left:(d_w-hd_w)/2+'px'});
+    }
+
+    else{
+        $('#chars img').css({left:0});
+        //$('#s_0 #badges').css({left:'150px'});
+        //$('#badges h5.myth').removeClass('narrower');
+        //$('#badges ul.cs_list').removeClass('narrower');
+
+
+    }
+
+
+
+    var ind =0;
+    if(window.screen.width<768 || DetectMobileLong()){
+        ind=1;
+    }
+
+
+
+    if(!forced_size)
+    {
+        if(window.orientation == -90)
+        {
+            resized(ind, window.screen.height);
+        }
+        else{
+            resized(ind, window.screen.width);
+        }
+    }
+
+
+
+});
+
+$(window).resize();
+
+
+/*switch between mobile and desktop via force*/
+
+$('.switch_mobile').bind('click',function(e){
+    forced_size = true;
+
+    e.preventDefault();
+    if(window.orientation == -90)
+    {
+        resized(1, window.screen.height);
+    }
+    else{
+        resized(1, window.screen.width);
+    }
+
+
+});
+$('.switch_desktop').bind('click',function(e){
+    forced_size = true;
+
+    e.preventDefault();
+    if(window.orientation == -90)
+    {
+        resized(0, window.screen.height);
+    }
+    else{
+        resized(0, window.screen.width);
+    }
+
+
+
+});
+
+
+
+/*explore slider*/
+var activeThumb;
+function initSlider(){
+    fastShow($('#slider'));
+    $('.thumbs a img').tween({opacity:{
+                                        start:100,
+                                        stop:50,
+                                        duration:0.1
+                                        }
+                            });
+    $.play();
+
+
+    slider_bx= $('#slider').bxSlider({
+        controls: false,
+        pager:false,
+        adaptiveHeight:true,
+        minSlides: 1,
+        maxSlides: 1,
+        moveSlides:1,
+        slideWidth:445,
+        easing:'ease-in-out',
+        touchEnabled:false,
+        useCSS:true,
+        pager:false,
+        infiniteLoop:true
+    });
+
+
+    //$('.thumbs a').click(function(){
+//  var thumbIndex = $('.thumbs a').index(this);
+$('.thumbs a').click(function(e){
+e.preventDefault();
+var thumbIndex = $('.thumbs a').index(this);
+
+    slider_bx.goToSlide(thumbIndex);
+
+
+    $('.thumbs a').removeClass('pager-active');
+    if(activeThumb){
+
+        activeThumb.bind('mouseenter',fadeToFull);
+        activeThumb.bind('mouseleave',fadeToHalf);
+        activeThumb.mouseleave();
+    }
+
+
+
+    $(this).addClass('pager-active');
+
+    activeThumb = $(this);
+    activeThumb.unbind('mouseleave');
+    activeThumb.unbind('mouseenter');
+
+    return false;
+    });
+
+
+    $('.thumbs a:first').addClass('pager-active');
+    activeThumb = $('.thumbs a:first');
+    activeThumb.mouseenter();
+    activeThumb.unbind('mouseleave');
+    activeThumb.unbind('mouseenter');
+
+}
+
+
+function initCarousel(){
+    fastShow($('#pets'))
+    $('#pets').bxSlider({
+                minSlides: 1,
+                maxSlides: 3,
+                moveSlides:1,
+                slideWidth:264,
+                easing:'ease-in-out',
+                touchEnabled:false,
+                useCSS:true,
+                pager:false,
+                infiniteLoop:true,
+                onSlideBefore:function(){Cufon.refresh('.myth');}
+              });
+
+}
+
+
+/*main init after preloading wrapper*/
+var content_loaded = false;
+function initMain(){
+    content_loaded = true;
+    checkAllLoaded();
+            /*video fancybox*/
+            $('#s_1 #video a').removeClass('fancybox');
+            $('#video a.fancybox').fancybox({
+                type:'iframe',
+                openEffect:'none',
+                closeEffect:'none',
+
+                scrolling:'no'
+            });
+            /*hover anims*/
+
+            $('.thumbs a').bind('mouseenter',fadeToFull);
+            $('.thumbs a').bind('mouseleave',fadeToHalf);
+
+            $('.video_frame a').bind('mouseenter',fadeTo90);
+            $('.video_frame a').bind('mouseleave',fadeToFull);
+}
+
+/*header preloading*/
+var ldCount=0;
+header_loaded =false;
+function preloadHeader(){
+    /*preload header*/
+            var chars_count = $('#header img').size();
+            $('#header img').load(function(){
+                //console.log('header loaded');
+                ldCount++;
+
+                if(ldCount == chars_count-1){
+
+                            header_loaded = true;
+                            checkAllLoaded();
+                }
+            }).load();
+
+}
+function checkAllLoaded()
+{
+    if(header_loaded)
+    {
+        $('body').addClass('loaded');
+
+        setTimeout(function(){
+            $('#loader').fadeOut(500,function(){$(this).hide()});
+            normalShow($('#header'));
+            $('#badges').removeClass('no-display');
+            normalShow($('#branch-right'));
+            normalShow($('#branch-left'));
+
+            setInterval(cycleImages, 7000);
+        },1000)
+
+    }
+}
+
+
+function loadProperImages(atr)
+{
+    $('#chars img').each(function(i,val){
+
+        $(this).attr('src',$(this).attr('data-'+atr));
+        //console.log("data attr : "+$(this).attr('data-'+atr));
+    });
+}
+    $(document).ready(function(){
+        quickHide($('#header'));
+        quickHide($('#pets'));
+        //quickHide($('#slider22'));
+        quickHide($('#popup_wrapper'));
+        quickHide($('#branch-left'));
+        quickHide($('#branch-right'));
+        preloadHeader();
+        initFooter();
+
+
+        $('.popuplink').click(function(e){
+
+            e.preventDefault();
+            open_popup();
+        });
+
+        $('.closepop').click(function(e){
+
+            e.preventDefault();
+            close_popup();
+        });
+
+        $('#wrapper').queryLoader2({
+            backgroundColor:'transparent',
+            barColor:'transparent',
+            onComplete:initMain
+        });
+
+
+    });
+
+    </script>
+    <script type="text/javascript">
+
+    Cufon.replace('.myth');
+
+
+</script>
+</body>
+</html>
