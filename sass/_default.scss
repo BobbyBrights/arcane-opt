@@ -181,6 +181,9 @@ p {
             @include mobi-badges-sprite(play-now);
         }
 }
+#badges.no-display{
+    display:none;
+}
 
 #playnow {
     margin: 37px 0 0 3px;
@@ -650,6 +653,12 @@ bottom: 28px;
     color: #393838;
     font-family: Georgia,'Times New Roman', serif;
     font-size: 16px;
+}
+a.footer-logo{
+    @include inline-block;
+    @include icon-size(152px,54px);
+    @include logo-sprite(powered-by);
+    text-indent: -99999px;
 }
 .copyright {
     clear: both;

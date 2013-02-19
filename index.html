@@ -8,7 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Arcane Legends</title>
         <meta name="description" content="">
-		<meta name="viewport" id="viewport" content="width=480" />
+		<meta name="viewport" id="viewport" content="width=device-width" />
 		<link rel="stylesheet" href="css/arcane.css">
 		<link href='http://fonts.googleapis.com/css?family=Carme' rel='stylesheet' type='text/css'>
 		<link rel="shortcut icon" href="img/favicon.ico">
@@ -121,9 +121,6 @@ function resized(i, width){
 			if(scrollImages)
 				scrollImages(0,500);
 
-
-
-
 		}
 
 
@@ -135,12 +132,9 @@ function resized(i, width){
 
 </script>
 
-<!--<script type="text/javascript" src="js/adapt.min.js"></script>-->
-
 <script type="text/javascript" src="js/jstween.min.js"></script>
 <script type="text/javascript" src="js/cufon-yui.js"></script>
 <script type="text/javascript" src="js/myth.js"></script>
-
 
 <script src="js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
@@ -193,7 +187,7 @@ function resized(i, width){
 	</div>
 	<div id="grad-right"></div>-->
 	<div id="header">
-			<div id="badges">
+			<div id="badges" class="no-display">
 				<a id="playnow" href="#playnow">Play Now</a>
 
 				<h4 class="myth">AVAILABLE ON</h4>
@@ -528,7 +522,7 @@ $(document).ready(function(){
 		<div class="clr"></div>
 
 		<div id="footer">
-			<p><a id="poweredby" href="http://www.spacetimestudios.com" target="_blank"><img src="img/powered-by.jpg" /></a></p>
+			<p><a id="poweredby" class="footer-logo" href="http://www.spacetimestudios.com" target="_blank">Spacetime Stios</a></p>
 			<script>
 				function initFooter()
 {
@@ -746,9 +740,6 @@ $(function(){
 	}
 });
 
-
-
-
 /*resize*/
 $(window).resize(function(e){
 
@@ -928,44 +919,9 @@ function initCarousel(){
 
 /*main init after preloading wrapper*/
 var content_loaded = false;
-function initMain()
-{
+function initMain(){
 	content_loaded = true;
 	checkAllLoaded();
-	//console.log('init main');
-
-			/*var pets_count=$('#pets img').size();
-			var pets_ld_count=0;
-			$('#pets img').load(function(){
-				pets_ld_count++;
-				if(pets_ld_count == pets_count)
-				{
-					setTimeout(initCarousel,500);
-				}
-
-			});*/
-			setTimeout(initCarousel,500);
-
-			/*var sl_count=$('#slider img').size();
-			var sl_ld_count=0;
-			$('#slider img').load(function(){
-				sl_ld_count++;
-				if(sl_ld_count == sl_count)
-				{
-					setTimeout(initSlider,500);
-				}
-
-			});*/
-
-			setTimeout(initSlider,500);
-
-
-
-
-
-
-
-
 			/*video fancybox*/
 			$('#s_1 #video a').removeClass('fancybox');
 			$('#video a.fancybox').fancybox({
@@ -975,8 +931,6 @@ function initMain()
 
 				scrolling:'no'
 			});
-
-
 			/*hover anims*/
 
 			$('.thumbs a').bind('mouseenter',fadeToFull);
@@ -991,41 +945,29 @@ var ldCount=0;
 header_loaded =false;
 function preloadHeader(){
 	/*preload header*/
-
 		  	var chars_count = $('#header img').size();
 			$('#header img').load(function(){
 				//console.log('header loaded');
 				ldCount++;
 
-
-				if(ldCount == chars_count){
+				if(ldCount == chars_count-1){
 
 							header_loaded = true;
 							checkAllLoaded();
 				}
-
-
 			}).load();
-			/*$('#header').queryLoader2({
-				barColor:'transparent',
-				backgroundColor:'transparent',
-				completeAnimation:'fade',
-				onComplete:function(){
-					console.log('header loaded');
-					$('#loader').fadeOut('fast',function(){$(this).hide()});
-					cycleImages();
-				}
-			});*/
+
 }
 function checkAllLoaded()
 {
-	if(header_loaded && content_loaded)
+	if(header_loaded)
 	{
 		$('body').addClass('loaded');
 
 		setTimeout(function(){
 			$('#loader').fadeOut(500,function(){$(this).hide()});
 			normalShow($('#header'));
+			$('#badges').removeClass('no-display');
 			normalShow($('#branch-right'));
 			normalShow($('#branch-left'));
 
@@ -1053,98 +995,6 @@ function loadProperImages(atr)
 		quickHide($('#branch-right'));
 		preloadHeader();
 		initFooter();
-
-
-
-
-	/*	$("#pets").swipe({
-			swipeLeft:function(){
-				$('.bx-next').click();
-			},
-			swipeRight:function(){
-				$('.bx-prev').click();
-			}
-
-		});
-*/
-
-
-
-
-		/*$("#slider").swipe({
-			swipeStatus:function(event, phase, direction, distance)
-			{
-				//If we are moving before swipe, and we are going Lor R in X mode, or U or D in Y mode then drag.
-				if( phase=="move" && (direction=="left" || direction=="right") )
-				{
-					var duration=0;
-
-					if (direction == "left")
-						scrollImages((IMG_WIDTH * currentImg) + distance, duration);
-
-					else if (direction == "right")
-						scrollImages((IMG_WIDTH * currentImg) - distance, duration);
-
-				}
-
-				else if ( phase == "cancel")
-				{
-					scrollImages(IMG_WIDTH * currentImg, speed);
-				}
-
-				else if ( phase =="end" )
-				{
-					if (direction == "right")
-						previousImage()
-					else if (direction == "left")
-						nextImage()
-				}
-
-
-			}
-
-		});*/
-
-
-
-
-
-
-
-
-		/*$("#pets").touchwipe({
-		     wipeLeft: function() { $('.bx-next').click();},
-		     wipeRight: function() { $('.bx-prev').click(); },
-		     min_move_x: 20,
-		     min_move_y: 20,
-		     preventDefaultEvents: true
-		});
-
-		function scrollImages(distance, duration)
-			{
-				imgs.css("-webkit-transition-duration", (duration/1000).toFixed(1) + "s");
-
-				//inverse the number we set in the css
-				var value = (distance<0 ? "" : "-") + Math.abs(distance).toString();
-
-				imgs.css("-webkit-transform", "translate3d("+value +"px,0px,0px)");
-			}
-
-		$("#slider").touchwipe({
-		     wipeLeft: function() {
-		     	console.log('slider left : '+$('#slider').position().left);
-		     	if($('#slider').position().left> -1460)
-		     		$('#slider').animate({left:'-=365px'});
-		 	},
-		     wipeRight: function() {
-
-		     	if($('#slider').position().left< -360)
-		     		$('#slider').animate({left:'+=365px'});
-		     },
-		     min_move_x: 20,
-		     min_move_y: 20,
-		     preventDefaultEvents: true
-		});*/
 
 
 		$('.popuplink').click(function(e){
