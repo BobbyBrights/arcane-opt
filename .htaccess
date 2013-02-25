@@ -211,7 +211,7 @@ AddType text/x-vcard                        vcf
   ExpiresByType text/cache-manifest       "access plus 0 seconds"
 
 # Your document html
-  ExpiresByType text/html                 "access plus 0 seconds"
+  ExpiresByType text/html                 "access plus 1 month"
 
 # Data
   ExpiresByType application/json          "access plus 0 seconds"
@@ -260,7 +260,7 @@ AddType text/x-vcard                        vcf
 # This is the official 'bypass' suggested by O2 in the UK.
 
 # <IfModule mod_headers.c>
-# Header set Cache-Control "no-transform"
+Header set Cache-Control "no-transform"
 # </IfModule>
 
 
@@ -276,7 +276,29 @@ AddType text/x-vcard                        vcf
 # Since we're sending far-future expires, we don't need ETags for
 # static content.
 #   developer.yahoo.com/performance/rules.html#etags
+Header unset Pragma
 FileETag None
+Header unset ETag
+
+# 1 YEAR
+<filesMatch ".(ico|pdf|flv|jpg|jpeg|png|gif|swf|mp3|mp4)$">
+Header set Cache-Control "public"
+Header set Expires "Thu, 15 Aug 2013 20:00:00 GMT"
+Header unset Last-Modified
+</filesMatch>
+
+# 5 Months
+<filesMatch ".(html|htm|xml|txt|xsl)$">
+Header set Cache-Control "max-age=12096000, must-revalidate"
+</filesMatch>
+
+# CACHED FOREVER
+# MOD_REWRITE TO RENAME EVERY CHANGE
+<filesMatch ".(js|css)$">
+Header set Cache-Control "public"
+Header set Expires "Thu, 15 Aug 2013 20:00:00 GMT"
+Header unset Last-Modified
+</filesMatch>
 
 
 # ----------------------------------------------------------------------

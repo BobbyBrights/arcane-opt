@@ -244,22 +244,6 @@ function resized(i, width){
 <script type="text/javascript" charset="utf-8">
 (jQuery);
 
-/*$(document).ready(function () {
-    // THIS IS NEW CODE FOR THE AUTOMATIC INFINITE CAROUSEL
-    var autoscrolling = true;
-
-    $('.infiniteCarousel').infiniteCarousel().mouseover(function () {
-        autoscrolling = false;
-    }).mouseout(function () {
-        autoscrolling = true;
-    });
-
-    setInterval(function () {
-        if (autoscrolling) {
-            $('.infiniteCarousel').trigger('next');
-        }
-    }, 2000);
-});*/
 
 function slide_left2(){
  var auto = 0;
@@ -490,58 +474,17 @@ function slide_right(){
             <script>
                 function initFooter()
 {
-    quickHide($("#footer .othergames a img.txt"));
+        $('.othergames a').hover(function(){
+            $(this).fadeIn();
+        });
 
-    $("#footer .othergames a").hover(
-        function(){
-            $(this).find('img.icon').tween({
-                opacity:{
-                    start:100,
-                    stop:25,
-                    duration:0.5,
-                    effect:'easeInOut'
-                }
-            });
-            $(this).find('img.txt').tween({
-                opacity:{
-                    start:0,
-                    stop:100,
-                    duration:0.8,
-                    effect:'easeIn'
-                }
-            });
-            $.play();
-        },
-
-        function(){
-            $(this).find('img.icon').tween({
-                opacity:{
-                    start:25,
-                    stop:100,
-                    duration:0.5,
-                    effect:'easeInOut'
-                }
-            });
-            $(this).find('img.txt').tween({
-                opacity:{
-                    start:100,
-                    stop:0,
-                    duration:0.8,
-                    effect:'easeOut'
-                }
-            });
-            $.play();
-
-        }
-        );
 }
 
 </script>
             <p class="othergames">
-
-                <a href="http://www.starlegends.com/" target="_blank"><img class="icon" src="img/star-legends.png"/><img class="txt" src="img/star-legends-txt.png"/></a>
-                <a href="http://www.pocketlegends.com/" target="_blank"><img class="icon" src="img/pocket-legends.png"/><img class="txt" src="img/pocket-legends-txt.png"/></a>
-                <a href="http://www.darklegends.com/" target="_blank"><img class="icon" src="img/dark-legends.png"/><img class="txt" src="img/dark-legends-txt.png"/></a>
+                <a href="http://www.starlegends.com/" target="_blank" class="star-icon">Start Legends</a>
+                <a href="http://www.pocketlegends.com/" target="_blank" class="pocket-icon">Pocket Legends</a>
+                <a href="http://www.darklegends.com/" target="_blank" class="dark-icon">Dark Legends</a>
             </p>
             <ul id="social">
                 <li><a href="http://www.facebook.com/ArcaneLegends" target="_blank"><img src="img/fb-icon.png" alt="Facebook"></a></li>
@@ -555,7 +498,12 @@ function slide_right(){
 
 
     </div><!--end wrapper-->
+ <script type="text/javascript">
 
+    Cufon.replace('.myth');
+
+
+</script>
 <script type="text/javascript" src="js/jquery.client.js"></script>
 <script type="text/javascript" src="js/mdetect.js"></script>
 <script type="text/javascript">
@@ -915,7 +863,6 @@ function preloadHeader(){
                 ldCount++;
 
                 if(ldCount == chars_count-1){
-
                             header_loaded = true;
                             checkAllLoaded();
                 }
@@ -952,7 +899,6 @@ function loadProperImages(atr)
 }
     $(document).ready(function(){
         quickHide($('#header'));
-        quickHide($('#pets'));
         //quickHide($('#slider22'));
         quickHide($('#popup_wrapper'));
         quickHide($('#branch-left'));
@@ -1009,11 +955,5 @@ function loadProperImages(atr)
     });
 
     </script>
-    <script type="text/javascript">
-
-    Cufon.replace('.myth');
-
-
-</script>
 </body>
 </html>

@@ -663,7 +663,7 @@ a.footer-logo{
 .copyright {
     clear: both;
 }
-
+@import "other-games/*.png";
 .othergames {
     margin-left: 29px;
 }
@@ -674,7 +674,33 @@ a.footer-logo{
     position: relative;
     width: 174px;
     height: 112px;
+    text-indent: -99999px;
+    &.star-icon{
+        @include other-games-sprite(star-legends);
+    }
+    &:hover.star-icon{
+        @include other-games-sprite(star-legends-hover);
+        @include transition(all 0.5s ease-in-out);
+    };
+    &.pocket-icon{
+        @include other-games-sprite(pocket-legends);
+    }
+    &:hover.pocket-icon{
+        @include other-games-sprite(pocket-legends-hover);
+        @include transition(all 0.5s ease-in-out);
+    };
+    &.dark-icon{
+        @include other-games-sprite(dark-legends);
+    }
+    &:hover.dark-icon{
+        @include other-games-sprite(dark-legends-hover);
+        @include transition(all 0.5s ease-in-out);
+    };
+    :hover{
+        @include transition(all 0.5s ease-in-out);
+    };
 }
+
 .othergames a img {
     position: absolute;
     top: 0;
@@ -921,8 +947,8 @@ display:block;
     left: -54px;
     z-index: 0;
 }
-#s_1 .title img {
-    width: 70px;
+
+#s_1 .title span.title-badge {
     top: -42px;
     left: 42%;
 }
@@ -944,16 +970,20 @@ display:block;
     line-height: 95px;
 }
 #s_1 .video_frame {
-    width: 95%;
-    background-size: 100%;
-    height: 288px;
+    background-origin: content-box;
+    background-position: 0 -500px;
+    background-size: 100% auto;
+    height: 336px;
+    margin-left: 10px;
+
+    width: 380px;
 }
 #s_1 .video_frame img {
     width: 94%;
     margin: 11px 0 0 11px;
 }
 #s_1 #video {
-    margin: 105px auto 0 auto;
+    margin: 105px auto 0 0;
     width: 97%;
 }
 #s_1 #live .cont-left {
@@ -1018,6 +1048,9 @@ background:none;
     display: block !important;
     opacity: 1 !important;
     margin: -8px 10px 0px 10px;
+}
+#s_1 .video_frame{
+    height: 260px;
 }
 #s_1 .bx-window {
     width: 1825px !important;
@@ -1092,22 +1125,9 @@ display:none;
     margin: 0 0 21px 0;
     width: 120px;
 }
-#s_1 .othergames a img {
-    width: 160px;
-    margin: 2px 25px;
-}
-#s_1 .othergames a:first-child img {
-    width: 150px;
-    margin: 0px;
-}
-#s_1 .othergames a:last-child img {
-    width: 117px;
-    margin: 2px 64px;
-}
 #s_1 .othergames {
-    margin-left: 7px;
+    margin:0 0 0 45px;
 }
-
 #s_1 #footer #social {
     clear: both;
     margin: 15px auto;
